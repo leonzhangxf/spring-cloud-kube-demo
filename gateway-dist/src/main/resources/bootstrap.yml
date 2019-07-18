@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: gateway-dist
+  profiles:
+    active: dev
+  cloud:
+    kubernetes:
+      client:
+        namespace: leonzhangxf
+#        master-url: http://localhost:8001
+#        password: "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi10b2tlbi1kZmRmdCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJhZG1pbiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjY5NDYyM2UwLWE5M2EtMTFlOS1iZWU1LTAwMTU1ZDRiMDEzMSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTphZG1pbiJ9.Gaf1e0gPyo-gl_aOPfF4e6hkXVaJZ4O85LIymItsXjSkCSJtGG2R_HyoCoDkftC22iCWcH9qNRNxmf-Z6MYT90aoMpyDCa4vvP6Iu4iNr8ovWnMgopYpnUSs0exxWeaBk9I6BaguucXa0rzijDxprlYu4DOBehcqV6xi6gB3SMnqLe3ljrrfpIGl64U2ysX7ytMDVSRi2ccEX1e3wwIbjIt70PCaI49Q_ADnuL3UtfONYHNk7vuuQNm-HqxTsebWdjHl9Ra-0o3Rq5sRTuVeh25mPJ4n3rn0YuIpUeG_u9Y0N9ceJFVXL5Q-Wpz2V9_MAfTVUb4iFO5zcNN9ez3iTA"

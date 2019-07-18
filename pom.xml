@@ -9,6 +9,7 @@
     <modules>
         <module>account-dist</module>
         <module>gateway-dist</module>
+        <module>account-api</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -24,6 +25,9 @@
         <spring-cloud-gateway.version>2.1.0.RELEASE</spring-cloud-gateway.version>
 
         <logstash-logback-encoder.version>6.1</logstash-logback-encoder.version>
+        <guava.version>28.0-jre</guava.version>
+        <guice.version>4.2.2</guice.version>
+        <swagger.version>3.0.0-SNAPSHOT</swagger.version>
     </properties>
 
     <dependencyManagement>
@@ -48,14 +52,41 @@
                 <version>${spring-cloud-kube.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-gateway</artifactId>
-                <version>${spring-cloud-gateway.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>net.logstash.logback</groupId>
                 <artifactId>logstash-logback-encoder</artifactId>
                 <version>${logstash-logback-encoder.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.inject</groupId>
+                <artifactId>guice</artifactId>
+                <version>${guice.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-spring-webmvc</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-spring-webflux</artifactId>
+                <version>${swagger.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -112,4 +143,29 @@
         </plugins>
     </build>
 
+    <repositories>
+        <repository>
+            <id>Nexus</id>
+            <url>https://nexus.boxuegu.cn/repository/maven-public/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+        <!-- springfox -->
+        <repository>
+            <id>jcenter-snapshots</id>
+            <name>jcenter</name>
+            <url>http://oss.jfrog.org/artifactory/oss-snapshot-local/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>

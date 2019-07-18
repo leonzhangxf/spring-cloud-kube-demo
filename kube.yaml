@@ -1,0 +1,81 @@
+# account-dist
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # Unique key of the Deployment instance
+  name: account-dist
+  namespace: leonzhangxf
+spec:
+  selector:
+    matchLabels:
+      name: account-dist
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: account-dist
+    spec:
+      containers:
+        - name: account-dist
+          image: ${REGISTRY}/leonzhangxf/account-dist:{{ TAG }}
+
+---
+
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  # Unique key of the Service instance
+  name: account-dist
+  namespace: leonzhangxf
+spec:
+  type: NodePort
+  selector:
+    name: account-dist
+  ports:
+    - name: http
+      nodePort: 30000
+      port: 8080
+
+---
+
+# gateway-dist
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # Unique key of the Deployment instance
+  name: gateway-dist
+  namespace: leonzhangxf
+spec:
+  selector:
+    matchLabels:
+      name: gateway-dist
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: gateway-dist
+    spec:
+      containers:
+        - name: gateway-dist
+          image: ${REGISTRY}/leonzhangxf/gateway-dist:{{ TAG }}
+
+---
+
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  # Unique key of the Service instance
+  name: gateway-dist
+  namespace: leonzhangxf
+spec:
+  type: NodePort
+  selector:
+    name: gateway-dist
+  ports:
+    - name: http
+      nodePort: 30001
+      port: 8080

@@ -34,6 +34,8 @@ kubectl apply -f dashboard-adminuser.yaml
 kubectl proxy --address=0.0.0.0
 ```
 
+> 注意此命令需要挂载到后台，不然会被销毁
+
 本地web-ui启动后访问地址：
 
 http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
