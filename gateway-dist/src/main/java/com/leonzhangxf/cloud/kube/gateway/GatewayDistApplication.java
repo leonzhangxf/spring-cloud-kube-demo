@@ -6,6 +6,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import springfox.documentation.swagger2.annotations.EnableSwagger2WebFlux;
 
 /**
@@ -17,9 +19,15 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebFlux;
 @EnableFeignClients(basePackageClasses = Api.class)
 @EnableScheduling
 @EnableSwagger2WebFlux
+@Controller
 public class GatewayDistApplication {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder(GatewayDistApplication.class).run(args);
+    }
+
+    @RequestMapping("/")
+    public String index() {
+        return "index";
     }
 }

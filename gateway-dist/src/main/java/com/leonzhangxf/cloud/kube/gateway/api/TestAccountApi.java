@@ -25,7 +25,7 @@ public class TestAccountApi {
     private AccountApi accountApi;
 
     @ApiOperation("test account")
-    @GetMapping("accounts")
+    @GetMapping("/accounts")
     public Mono<List<Account>> getAccounts() {
         ResponseEntity<List<Account>> response = accountApi.getAccounts();
         log.info("the status {}", response.getStatusCodeValue());

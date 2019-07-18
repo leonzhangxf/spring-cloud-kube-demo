@@ -19,7 +19,7 @@ import java.util.List;
 public class AccountApiImpl implements AccountApi {
 
     @ApiOperation("查询账户信息")
-    @GetMapping("accounts")
+    @GetMapping("/accounts")
     @Override
     public ResponseEntity<List<Account>> getAccounts() {
         Account account1 = new Account();
