@@ -22,10 +22,20 @@ public class AccountApiImpl implements AccountApi {
     @GetMapping("accounts")
     @Override
     public ResponseEntity<List<Account>> getAccounts() {
-        return ResponseEntity.ok(Lists.newArrayList(
-            Account.builder().id(1).username("leon").password("123456").build(),
-            Account.builder().id(1).username("ding").password("55555").build(),
-            Account.builder().id(1).username("li").password("23333").build()
-        ));
+        Account account1 = new Account();
+        account1.setId(1);
+        account1.setUsername("leon");
+        account1.setPassword("123456");
+
+        Account account2 = new Account();
+        account2.setId(1);
+        account2.setUsername("ding");
+        account2.setPassword("55555");
+
+        Account account3 = new Account();
+        account3.setId(1);
+        account3.setUsername("li");
+        account3.setPassword("23333");
+        return ResponseEntity.ok(Lists.newArrayList(account1, account2, account3));
     }
 }
