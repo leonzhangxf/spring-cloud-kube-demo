@@ -5,7 +5,7 @@ kind: Deployment
 metadata:
   # Unique key of the Deployment instance
   name: account-dist
-  namespace: leonzhangxf
+  namespace: {{ NAMESPACE }}
 spec:
   selector:
     matchLabels:
@@ -28,14 +28,12 @@ kind: Service
 metadata:
   # Unique key of the Service instance
   name: account-dist
-  namespace: leonzhangxf
+  namespace: {{ NAMESPACE }}
 spec:
-  type: NodePort
   selector:
     name: account-dist
   ports:
     - name: http
-      nodePort: 30000
       port: 8080
 
 ---
@@ -47,7 +45,7 @@ kind: Deployment
 metadata:
   # Unique key of the Deployment instance
   name: gateway-dist
-  namespace: leonzhangxf
+  namespace: {{ NAMESPACE }}
 spec:
   selector:
     matchLabels:
@@ -70,7 +68,7 @@ kind: Service
 metadata:
   # Unique key of the Service instance
   name: gateway-dist
-  namespace: leonzhangxf
+  namespace: {{ NAMESPACE }}
 spec:
   type: NodePort
   selector:

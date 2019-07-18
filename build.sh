@@ -3,6 +3,8 @@
 # docker
 REGISTRY=registry.cn-hangzhou.aliyuncs.com/leonzhangxf
 TAG=`date "+%Y%m%d%H%M%S"`
+# kube
+NAMESPACE=leonzhangxf
 
 # 构建项目
 echo "Maven build start..."
@@ -29,3 +31,4 @@ done
 DEPLOY_FILE=$(find ./ -name kube.yaml)
 sed -i "s|{{ TAG }}|${TAG}|g" ${DEPLOY_FILE}
 sed -i "s|{{ REGISTRY }}|${REGISTRY}|g" ${DEPLOY_FILE}
+sed -i "s|{{ NAMESPACE }}|${NAMESPACE}|g" ${DEPLOY_FILE}

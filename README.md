@@ -50,6 +50,8 @@ http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kube
 2. xxxx
 3. xxxx
 
+docker images | grep none | awk "{print $3}" | xargs docker rmi
+
 ## 参与贡献
 
 1. Fork 本仓库
