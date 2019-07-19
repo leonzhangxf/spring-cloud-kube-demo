@@ -19,7 +19,7 @@ gateway-dist
 
 for ((i=0;i<${#MODULES[*]};i++)); do
     echo "Docker build start..."
-    docker build -t ${REGISTRY}/${MODULES[$i]}:${TAG} ./${MODULES[$i]}
+    docker build -t ${REGISTRY}/${MODULES[$i]}.leonzhangxf.com:${TAG} ./${MODULES[$i]}
     echo "Docker build end..."
 
     echo "Docker push start..."

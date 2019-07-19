@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false">
 
-    <springProperty name="fileDir" source="spring.application.name" defaultValue="gateway-dist"/>
+    <springProperty name="fileDir" source="spring.application.name" defaultValue="gateway-dist.leonzhangxf.com"/>
     <springProperty name="profile" source="spring.profiles.active" defaultValue="dev"/>
     <property name="logPath" value="/tmp/logs/${fileDir}/${profile}"/>
 
