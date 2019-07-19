@@ -70,9 +70,9 @@ metadata:
   name: gateway-dist
   namespace: {{ NAMESPACE }}
 spec:
-  type: NodePort
   selector:
     name: gateway-dist
+  type: NodePort
   ports:
     - name: http
       nodePort: 30001
