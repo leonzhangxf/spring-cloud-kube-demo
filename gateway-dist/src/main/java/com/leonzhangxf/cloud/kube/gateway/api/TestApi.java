@@ -2,6 +2,7 @@ package com.leonzhangxf.cloud.kube.gateway.api;
 
 import com.leonzhangxf.cloud.kube.account.api.AccountApi;
 import com.leonzhangxf.cloud.kube.account.domain.Account;
+import com.leonzhangxf.cloud.kube.gateway.configuration.GatewayConfiguration;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -19,10 +20,12 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@Api(tags = "TEST AC")
-public class TestAccountApi {
+@Api(tags = "TEST")
+public class TestApi {
 
     private AccountApi accountApi;
+
+    private GatewayConfiguration gatewayConfiguration;
 
     @ApiOperation("test account")
     @GetMapping("/accounts")
@@ -32,8 +35,19 @@ public class TestAccountApi {
         return Mono.justOrEmpty(response.getBody());
     }
 
+    @ApiOperation("test config")
+    @GetMapping("/configs")
+    public Mono<String> getConfigs() {
+        return Mono.justOrEmpty(gatewayConfiguration.getMessage());
+    }
+
     @Autowired
     public void setAccountApi(AccountApi accountApi) {
         this.accountApi = accountApi;
+    }
+
+    @Autowired
+    public void setGatewayConfiguration(GatewayConfiguration gatewayConfiguration) {
+        this.gatewayConfiguration = gatewayConfiguration;
     }
 }

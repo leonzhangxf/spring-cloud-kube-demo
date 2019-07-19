@@ -77,3 +77,23 @@ spec:
     - name: http
       nodePort: 30001
       port: 8080
+
+---
+
+# ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gateway-dist
+  namespace: {{ NAMESPACE }}
+data:
+  application.yaml: |-
+    gateway:
+      config:
+        message: maggie
+    ---
+    spring:
+      profiles: dev
+    gateway:
+      config:
+        message: leon&maggie
