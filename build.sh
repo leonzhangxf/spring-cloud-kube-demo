@@ -25,6 +25,12 @@ for ((i=0;i<${#MODULES[*]};i++)); do
     echo "Docker push start..."
     # docker push ${REGISTRY}/${MODULES[$i]}:${TAG}
     echo "Docker push end..."
+
+    # kube部署文件替换
+    DEPLOY_FILE=$(find ./${MODULES[$i]}/ -name kube.yaml)
+    sed -i "s|{{ TAG }}|${TAG}|g" ${DEPLOY_FILE}
+    sed -i "s|{{ REGISTRY }}|${REGISTRY}|g" ${DEPLOY_FILE}
+    sed -i "s|{{ NAMESPACE }}|${NAMESPACE}|g" ${DEPLOY_FILE}
 done
 
 # kube部署文件替换
