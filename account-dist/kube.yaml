@@ -51,3 +51,23 @@ spec:
   ports:
     - name: http
       port: 8080
+
+---
+
+# ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: account-dist
+  namespace: {{ NAMESPACE }}
+data:
+  application.yaml: |-
+    swagger:
+      doc:
+        title: account swagger
+    ---
+    spring:
+      profiles: dev
+    swagger:
+      doc:
+        title: account swagger dev

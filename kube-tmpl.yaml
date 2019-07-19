@@ -54,6 +54,26 @@ spec:
 
 ---
 
+# ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: account-dist
+  namespace: {{ NAMESPACE }}
+data:
+  application.yaml: |-
+    swagger:
+      doc:
+        title: account swagger
+    ---
+    spring:
+      profiles: dev
+    swagger:
+      doc:
+        title: account swagger dev
+
+---
+
 # gateway-dist
 # Deployment
 apiVersion: apps/v1
