@@ -1,6 +1,6 @@
 spring:
   application:
-    name: gateway-dist.leonzhangxf.com
+    name: gateway-dist
   profiles:
     active: dev
   cloud:
