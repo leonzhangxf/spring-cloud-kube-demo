@@ -48,6 +48,7 @@ metadata:
 spec:
   selector:
     name: account-dist
+  type: NodePort
   ports:
     - name: http
       port: 8080
