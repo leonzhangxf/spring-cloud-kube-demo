@@ -3,3 +3,7 @@ spring:
     name: account-dist
   profiles:
     active: dev
+  cloud:
+    kubernetes:
+      client:
+        namespace: leonzhangxf
