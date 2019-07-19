@@ -12,7 +12,7 @@ import java.util.List;
  * @author leonzhangxf
  * @date 20190718
  */
-@FeignClient("account-dist")
+@FeignClient("account-dist.leonzhangxf.com")
 @Component
 public interface AccountApi {
 

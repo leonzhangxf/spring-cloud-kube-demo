@@ -1,6 +1,6 @@
 spring:
   application:
-    name: account-dist
+    name: account-dist.leonzhangxf.com
   profiles:
     active: dev
   cloud:

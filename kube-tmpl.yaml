@@ -1,24 +1,24 @@
-# account-dist
+# account-dist.leonzhangxf.com
 # Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   # Unique key of the Deployment instance
-  name: account-dist
+  name: account-dist.leonzhangxf.com
   namespace: {{ NAMESPACE }}
 spec:
   selector:
     matchLabels:
-      name: account-dist
+      name: account-dist.leonzhangxf.com
   replicas: 1
   template:
     metadata:
       labels:
-        name: account-dist
+        name: account-dist.leonzhangxf.com
     spec:
       containers:
-        - name: account-dist
-          image: {{ REGISTRY }}/account-dist:{{ TAG }}
+        - name: account-dist.leonzhangxf.com
+          image: {{ REGISTRY }}/account-dist.leonzhangxf.com:{{ TAG }}
           livenessProbe:
             failureThreshold: 3
             httpGet:
@@ -43,38 +43,38 @@ apiVersion: v1
 kind: Service
 metadata:
   # Unique key of the Service instance
-  name: account-dist
+  name: account-dist.leonzhangxf.com
   namespace: {{ NAMESPACE }}
 spec:
   selector:
-    name: account-dist
+    name: account-dist.leonzhangxf.com
   ports:
     - name: http
       port: 8080
 
 ---
 
-# gateway-dist
+# gateway-dist.leonzhangxf.com
 # Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   # Unique key of the Deployment instance
-  name: gateway-dist
+  name: gateway-dist.leonzhangxf.com
   namespace: {{ NAMESPACE }}
 spec:
   selector:
     matchLabels:
-      name: gateway-dist
+      name: gateway-dist.leonzhangxf.com
   replicas: 1
   template:
     metadata:
       labels:
-        name: gateway-dist
+        name: gateway-dist.leonzhangxf.com
     spec:
       containers:
-        - name: gateway-dist
-          image: {{ REGISTRY }}/gateway-dist:{{ TAG }}
+        - name: gateway-dist.leonzhangxf.com
+          image: {{ REGISTRY }}/gateway-dist.leonzhangxf.com:{{ TAG }}
           livenessProbe:
             failureThreshold: 3
             httpGet:
@@ -99,11 +99,11 @@ apiVersion: v1
 kind: Service
 metadata:
   # Unique key of the Service instance
-  name: gateway-dist
+  name: gateway-dist.leonzhangxf.com
   namespace: {{ NAMESPACE }}
 spec:
   selector:
-    name: gateway-dist
+    name: gateway-dist.leonzhangxf.com
   type: NodePort
   ports:
     - name: http
@@ -116,7 +116,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: gateway-dist
+  name: gateway-dist.leonzhangxf.com
   namespace: {{ NAMESPACE }}
 data:
   application.yaml: |-
