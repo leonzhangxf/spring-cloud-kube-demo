@@ -146,19 +146,6 @@
     </build>
 
     <repositories>
-        <repository>
-            <id>Nexus</id>
-            <url>https://nexus.boxuegu.cn/repository/maven-public/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
         <!-- springfox -->
         <repository>
             <id>jcenter-snapshots</id>
