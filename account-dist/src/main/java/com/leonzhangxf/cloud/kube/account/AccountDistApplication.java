@@ -32,7 +32,7 @@ public class AccountDistApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         log.info("services {}", discoveryClient.getServices());
-        List<ServiceInstance> gatewayInstances = discoveryClient.getInstances("gateway-dist");
+        List<ServiceInstance> gatewayInstances = discoveryClient.getInstances("account-dist");
         if (!CollectionUtils.isEmpty(gatewayInstances)) {
             ServiceInstance serviceInstance = gatewayInstances.get(0);
             log.info("==== {}", serviceInstance.getUri().toString());
