@@ -5,7 +5,7 @@ kind: Deployment
 metadata:
   # Unique key of the Deployment instance
   name: account-dist
-  namespace: {{ NAMESPACE }}
+  namespace: leonzhangxf
 spec:
   selector:
     matchLabels:
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: account-dist
-          image: {{ REGISTRY }}/account-dist:{{ TAG }}
+          image: registry.cn-hangzhou.aliyuncs.com/leonzhangxf/account-dist:20190722131328
           livenessProbe:
             failureThreshold: 3
             httpGet:
@@ -44,7 +44,7 @@ kind: Service
 metadata:
   # Unique key of the Service instance
   name: account-dist
-  namespace: {{ NAMESPACE }}
+  namespace: leonzhangxf
 spec:
   selector:
     name: account-dist
@@ -61,7 +61,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: account-dist
-  namespace: {{ NAMESPACE }}
+  namespace: leonzhangxf
 data:
   application.yaml: |-
     swagger:
@@ -83,7 +83,7 @@ kind: Deployment
 metadata:
   # Unique key of the Deployment instance
   name: gateway-dist
-  namespace: {{ NAMESPACE }}
+  namespace: leonzhangxf
 spec:
   selector:
     matchLabels:
@@ -96,7 +96,7 @@ spec:
     spec:
       containers:
         - name: gateway-dist
-          image: {{ REGISTRY }}/gateway-dist:{{ TAG }}
+          image: registry.cn-hangzhou.aliyuncs.com/leonzhangxf/gateway-dist:20190722131328
           livenessProbe:
             failureThreshold: 3
             httpGet:
@@ -111,7 +111,7 @@ spec:
               path: /actuator/health
               port: 8080
               scheme: HTTP
-            initialDelaySeconds: 10
+            initialDelaySeconds: 15
             successThreshold: 1
 
 ---
@@ -122,7 +122,7 @@ kind: Service
 metadata:
   # Unique key of the Service instance
   name: gateway-dist
-  namespace: {{ NAMESPACE }}
+  namespace: leonzhangxf
 spec:
   selector:
     name: gateway-dist
@@ -139,7 +139,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: gateway-dist
-  namespace: {{ NAMESPACE }}
+  namespace: leonzhangxf
 data:
   application.yaml: |-
     gateway:

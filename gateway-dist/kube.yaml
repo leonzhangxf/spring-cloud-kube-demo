@@ -1,24 +1,24 @@
-# account-dist
+# gateway-dist
 # Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   # Unique key of the Deployment instance
-  name: account-dist
+  name: gateway-dist
   namespace: {{ NAMESPACE }}
 spec:
   selector:
     matchLabels:
-      name: account-dist
+      name: gateway-dist
   replicas: 1
   template:
     metadata:
       labels:
-        name: account-dist
+        name: gateway-dist
     spec:
       containers:
-        - name: account-dist
-          image: {{ REGISTRY }}/account-dist:{{ TAG }}
+        - name: gateway-dist
+          image: {{ REGISTRY }}/gateway-dist:{{ TAG }}
           livenessProbe:
             failureThreshold: 3
             httpGet:
@@ -33,7 +33,7 @@ spec:
               path: /actuator/health
               port: 8080
               scheme: HTTP
-            initialDelaySeconds: 15
+            initialDelaySeconds: 20
             successThreshold: 1
 
 ---
@@ -43,11 +43,11 @@ apiVersion: v1
 kind: Service
 metadata:
   # Unique key of the Service instance
-  name: account-dist
+  name: gateway-dist
   namespace: {{ NAMESPACE }}
 spec:
   selector:
-    name: account-dist
+    name: gateway-dist
   type: NodePort
   ports:
     - name: http
@@ -60,7 +60,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: account-dist
+  name: gateway-dist
   namespace: {{ NAMESPACE }}
 data:
   application.yaml: |-
