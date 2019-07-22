@@ -21,8 +21,6 @@
 
         <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
-        <spring-cloud-kube.version>1.0.2.RELEASE</spring-cloud-kube.version>
-        <spring-cloud-gateway.version>2.1.0.RELEASE</spring-cloud-gateway.version>
 
         <logstash-logback-encoder.version>6.1</logstash-logback-encoder.version>
         <guava.version>28.0-jre</guava.version>
@@ -43,13 +41,6 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-kubernetes-dependencies</artifactId>
-                <version>${spring-cloud-kube.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
