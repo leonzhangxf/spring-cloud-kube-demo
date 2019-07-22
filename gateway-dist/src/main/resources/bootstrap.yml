@@ -9,6 +9,21 @@ spring:
         enabled: true
       client:
         namespace: leonzhangxf
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: account
+          uri: lb://account-dist
+          predicates:
+            - name: Path
+              args:
+                pattern: /account/**
+          filters:
+            - name: StripPrefix
+              args:
+                parts: 1
 
 # 要使用 spring.cloud.kubernetes.reload.enabled 默认就必须同时开始actuator的restart endpoint
 management:
