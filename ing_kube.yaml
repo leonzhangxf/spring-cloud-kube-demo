@@ -19,3 +19,8 @@ spec:
           - backend:
               serviceName: gateway-dist
               servicePort: 8080
+    - http:
+        paths:
+          - backend:
+              serviceName: gateway-dist
+              servicePort: 8080
