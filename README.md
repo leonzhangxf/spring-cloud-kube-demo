@@ -74,13 +74,13 @@ kubectl apply -f ing_test.yaml
 2. add a hosts record to local `hosts` file
 
 ```text
-127.0.0.1 account.boxuegu.com
+127.0.0.1 account.leonzhangxf.com
 ```
 
 3. use curl to testify the config 
 
 ```bash
-curl http://account.boxuegu.com
+curl http://account.leonzhangxf.com
 ```
 
 ## 使用说明

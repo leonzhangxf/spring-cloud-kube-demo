@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-leonzhangxf
+  namespace: leonzhangxf
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: account.leonzhangxf.com
+      http:
+        paths:
+          - backend:
+              serviceName: account-dist
+              servicePort: 8080
+    - host: gateway.leonzhangxf.com
+      http:
+        paths:
+          - backend:
+              serviceName: gateway-dist
+              servicePort: 8080
