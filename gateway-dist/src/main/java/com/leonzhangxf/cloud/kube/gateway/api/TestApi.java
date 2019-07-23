@@ -27,7 +27,7 @@ public class TestApi {
 
     private GatewayConfiguration gatewayConfiguration;
 
-    @ApiOperation("test account")
+    @ApiOperation(value = "Test invoke account service", notes = "此接口调用通过服务注册发现、负载均衡机制调用account服务")
     @GetMapping("/accounts")
     public Mono<List<Account>> getAccounts() {
         ResponseEntity<List<Account>> response = accountApi.getAccounts();
@@ -35,7 +35,9 @@ public class TestApi {
         return Mono.justOrEmpty(response.getBody());
     }
 
-    @ApiOperation("test config")
+    @ApiOperation(value = "Test config", notes = "此接口用于演示基于kubernetes的中心化配置功能，预计ConfigMap，" +
+        "可以通过kubernetes proxy启动后启动的administration webUI进行配置更新，或者通过命令更新ConfigMap，" +
+        "再通过此接口查看配置更新")
     @GetMapping("/configs")
     public Mono<String> getConfigs() {
         return Mono.justOrEmpty(gatewayConfiguration.getMessage());
