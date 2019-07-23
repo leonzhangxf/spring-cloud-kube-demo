@@ -1,10 +1,27 @@
 #!/usr/bin/env bash
 
-# docker
-REGISTRY=registry.cn-hangzhou.aliyuncs.com/leonzhangxf
-TAG=`date "+%Y%m%d%H%M%S"`
+# profiles
+SPRING_PROFILES_ACTIVE=$1
+if [[ SPRING_PROFILES_ACTIVE || -z SPRING_PROFILES_ACTIVE ]]; then
+	SPRING_PROFILES_ACTIVE=dev
+fi
+
 # kube
-NAMESPACE=leonzhangxf
+NAMESPACE=$2
+if [[ NAMESPACE || -z NAMESPACE ]]; then
+	NAMESPACE=leonzhangxf
+fi
+
+# docker
+REGISTRY=$3
+if [[ REGISTRY || -z REGISTRY ]]; then
+	REGISTRY=registry.cn-hangzhou.aliyuncs.com/leonzhangxf
+fi
+
+TAG=$4
+if [[ TAG || -z TAG ]]; then
+	TAG=`date "+%Y%m%d%H%M%S"`
+fi
 
 # 构建项目
 echo "Maven build start..."
@@ -28,14 +45,19 @@ for ((i=0;i<${#MODULES[*]};i++)); do
 
     # kube部署文件替换
     KUBE_FILE=$(find ./${MODULES[$i]}/ -name kube.yaml)
-    sed -i "s|{{ TAG }}|${TAG}|g" ${KUBE_FILE}
-    sed -i "s|{{ REGISTRY }}|${REGISTRY}|g" ${KUBE_FILE}
-    sed -i "s|{{ NAMESPACE }}|${NAMESPACE}|g" ${KUBE_FILE}
-
+    if [[ -e ${KUBE_FILE} ]]; then
+        sed -i "s|{{ TAG }}|${TAG}|g" ${KUBE_FILE}
+        sed -i "s|{{ REGISTRY }}|${REGISTRY}|g" ${KUBE_FILE}
+        sed -i "s|{{ NAMESPACE }}|${NAMESPACE}|g" ${KUBE_FILE}
+        sed -i "s|{{ SPRING_PROFILES_ACTIVE }}|${SPRING_PROFILES_ACTIVE}|g" ${SPRING_PROFILES_ACTIVE}
+    fi
 done
 
 # kube部署文件替换
 KUBE_FILE=$(find ./ -name kube.yaml)
-sed -i "s|{{ TAG }}|${TAG}|g" ${KUBE_FILE}
-sed -i "s|{{ REGISTRY }}|${REGISTRY}|g" ${KUBE_FILE}
-sed -i "s|{{ NAMESPACE }}|${NAMESPACE}|g" ${KUBE_FILE}
+if [[ -e ${KUBE_FILE} ]]; then
+    sed -i "s|{{ TAG }}|${TAG}|g" ${KUBE_FILE}
+    sed -i "s|{{ REGISTRY }}|${REGISTRY}|g" ${KUBE_FILE}
+    sed -i "s|{{ NAMESPACE }}|${NAMESPACE}|g" ${KUBE_FILE}
+    sed -i "s|{{ SPRING_PROFILES_ACTIVE }}|${SPRING_PROFILES_ACTIVE}|g" ${SPRING_PROFILES_ACTIVE}
+fi
