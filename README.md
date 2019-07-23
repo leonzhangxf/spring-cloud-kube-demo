@@ -28,7 +28,7 @@ spring cloud kube实现
 kubectl apply -f dashboard-adminuser.yaml
 ```
 
-#### 1.2 管理界面
+##### 1.1.2 管理界面
 
 ```bash
 kubectl proxy --address=0.0.0.0
@@ -40,9 +40,43 @@ kubectl proxy --address=0.0.0.0
 
 http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
 
+#### 1.2 CoreDNS & ingress-nginx controller
 
+##### 1.2.1 CoreDNS
 
+##### 1.2.2 ingress-nginx controller
 
+deploy ingress-nginx controller
+
+```bash
+kubectl apply -f deploy_ing_nginx.yaml
+```
+
+attach service to the deploy
+
+```bash
+kubectl apply -f svc_nginx.yaml
+```
+
+test the config
+
+1. add a ingress (startup a account service at first)
+
+```bash
+kubectl apply -f ing_test.yaml
+```
+
+2. add a hosts record to local `hosts` file
+
+```text
+127.0.0.1 account.boxuegu.com
+```
+
+3. use curl to testify the config 
+
+```bash
+curl http://account.boxuegu.com
+```
 
 ## 使用说明
 
