@@ -147,7 +147,9 @@ kubectl apply -f ing_kube.yaml
 > 注：`ribbon.listOfServers`中的域名配置需要结合kube ingress提供服务的外部暴露。
 > 可以参考[`1.2.2 ingress-nginx controller`](#1.2.2 ingress-nginx controller)以及`ing_kube.yaml`编排文件。
 
-### 2 Spring Cloud Kubernetes 的服务注册与发现、负载均衡、中心化配置
+### 2. Spring Cloud Kubernetes 的服务注册与发现、负载均衡、中心化配置
+
+#### 2.1 SCKube的服务注册与发现、负载均衡
 
 Spring Cloud Kubernetes（以下简称 SCKube）的服务注册与发现与负载均衡本质上都是基于kubernetes的endpoint去实现的。
 
@@ -157,16 +159,25 @@ Spring Cloud Kubernetes（以下简称 SCKube）的服务注册与发现与负�
 类似的，在服务调用时如果使用了SCKube ribbon适配组件，则也将使用serviceId通过kubernetes API查询对应的endpoint，最后提供以供
 负载均衡器进行选择调用的server list。因此，同样也是endpoint的IP和PORT。
 
-而endpoint的IP和PORT都是在kube集群内部的DN（Doamin Name）地址。
+而endpoint的IP和PORT都是在kube集群内部的DN（Domain Name）地址。
 
-在这种情况下，使用
+在这种情况下，如果直接使用SCKube的负载均衡适配器进行RPC调用，实质上将会调用kubernetes集群内部的endpoint的IP和PORT，结果当然是无法进行
+正常调用的。
 
+因此，当本地调试时，就需要暂时关闭掉SCKube的ribbon负载均衡适配器，并通过其他方式，如ingress暴露内部的服务，使其能够被宿主机访问。
+再通过ribbon本地配置server list，从而实现本地调试微服务内局部服务的目的。
 
-### 2. 删除本地调试产生的多余的镜像
+#### 2.2 SCKube的中心化配置
+
+SCKube的中心化配置依赖于kubernetes的ConfigMap、Secret等组件Resource，其提供了配置外置、环境区分、
+配置数据加密（本Demo没有演示，可以参见SCKube官方文档）等功能。
+
+通过依赖kubernetes底层的[etcd](https://etcd.io/)（分布式、高可靠性的键值存储中间件，golang编写），
+为配置提供了可靠地外部存储和加密传输方案。
+
+### 3. 删除本地调试产生的多余的镜像
 
 docker images | grep 镜像名称 | awk "{print $3}" | xargs docker rmi
-
-
 
 ## 参与贡献
 
