@@ -5,7 +5,7 @@ kind: Deployment
 metadata:
   # Unique key of the Deployment instance
   name: account-dist
-  namespace: {{ NAMESPACE }}
+  namespace: ${NAMESPACE}
 spec:
   selector:
     matchLabels:
@@ -18,10 +18,10 @@ spec:
     spec:
       containers:
         - name: account-dist
-          image: {{ REGISTRY }}/account-dist:{{ TAG }}
+          image: ${REGISTRY}/account-dist:${TAG}
           env:
             - name: SPRING_PROFILES_ACTIVE
-              value: {{ SPRING_PROFILES_ACTIVE }}
+              value: ${SPRING_PROFILES_ACTIVE}
           livenessProbe:
             failureThreshold: 3
             httpGet:
@@ -47,7 +47,7 @@ kind: Service
 metadata:
   # Unique key of the Service instance
   name: account-dist
-  namespace: {{ NAMESPACE }}
+  namespace: ${NAMESPACE}
 spec:
   selector:
     name: account-dist
@@ -62,7 +62,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: account-dist
-  namespace: {{ NAMESPACE }}
+  namespace: ${NAMESPACE}
 data:
   application.yaml: |-
     swagger:
@@ -84,7 +84,7 @@ kind: Deployment
 metadata:
   # Unique key of the Deployment instance
   name: gateway-dist
-  namespace: {{ NAMESPACE }}
+  namespace: ${NAMESPACE}
 spec:
   selector:
     matchLabels:
@@ -97,10 +97,10 @@ spec:
     spec:
       containers:
         - name: gateway-dist
-          image: {{ REGISTRY }}/gateway-dist:{{ TAG }}
+          image: ${REGISTRY}/gateway-dist:${TAG}
           env:
             - name: SPRING_PROFILES_ACTIVE
-              value: {{ SPRING_PROFILES_ACTIVE }}
+              value: ${SPRING_PROFILES_ACTIVE}
           livenessProbe:
             failureThreshold: 3
             httpGet:
@@ -126,7 +126,7 @@ kind: Service
 metadata:
   # Unique key of the Service instance
   name: gateway-dist
-  namespace: {{ NAMESPACE }}
+  namespace: ${NAMESPACE}
 spec:
   selector:
     name: gateway-dist
@@ -141,7 +141,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: gateway-dist
-  namespace: {{ NAMESPACE }}
+  namespace: ${NAMESPACE}
 data:
   application.yaml: |-
     gateway:
