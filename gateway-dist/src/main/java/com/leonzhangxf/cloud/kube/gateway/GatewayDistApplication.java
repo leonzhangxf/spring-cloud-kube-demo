@@ -45,14 +45,12 @@ public class GatewayDistApplication implements CommandLineRunner {
         log.info("services {}", discoveryClient.getServices());
         List<ServiceInstance> instances = discoveryClient.getInstances("account-dist");
         if (!CollectionUtils.isEmpty(instances)) {
-            ServiceInstance serviceInstance = instances.get(0);
-            log.info("==== {}", serviceInstance.getUri().toString());
-            log.info("==== {}", serviceInstance.getServiceId());
-            log.info("==== {}", serviceInstance.getInstanceId());
-            log.info("==== {}", serviceInstance.getScheme());
-            log.info("==== {}", serviceInstance.getHost());
-            log.info("==== {}", serviceInstance.getPort());
-            log.info("==== {}", serviceInstance.getMetadata());
+            for (ServiceInstance serviceInstance : instances) {
+                log.info("Get the account-dist pod.");
+                log.info("The pod serviceId:{},\n uri:{},\n instanceId:{},\n metadata:{}.",
+                    serviceInstance.getServiceId(), serviceInstance.getUri(),
+                    serviceInstance.getInstanceId(), serviceInstance.getMetadata());
+            }
         }
     }
 
