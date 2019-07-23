@@ -44,21 +44,26 @@ http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kube
 
 ##### 1.2.1 CoreDNS
 
+To install CoreDNS refer to 
+[Use CoreDNS in kubernetes](https://github.com/coredns/deployment/tree/master/kubernetes)
+
 ##### 1.2.2 ingress-nginx controller
 
-deploy ingress-nginx controller
+参见文档 [ingress-nginx](https://kubernetes.github.io/ingress-nginx/deploy/)
+
+Deploy ingress-nginx controller
 
 ```bash
 kubectl apply -f deploy_ing_nginx.yaml
 ```
 
-attach service to the deploy
+Attach service to the deploy
 
 ```bash
 kubectl apply -f svc_nginx.yaml
 ```
 
-test the config
+Test the config
 
 1. add a ingress (startup a account service at first)
 
