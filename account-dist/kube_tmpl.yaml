@@ -20,7 +20,7 @@ spec:
         - name: account-dist
           image: {{ REGISTRY }}/account-dist:{{ TAG }}
           env:
-            name: SPRING_PROFILES_ACTIVE
+          - name: SPRING_PROFILES_ACTIVE
             value: {{ SPRING_PROFILES_ACTIVE }}
           livenessProbe:
             failureThreshold: 3
