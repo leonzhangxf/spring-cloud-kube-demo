@@ -12,8 +12,8 @@ import java.util.List;
  * @author leonzhangxf
  * @date 20190718
  */
-@FeignClient("account-dist")
 @Component
+@FeignClient("account-dist")
 public interface AccountApi {
 
     /**
