@@ -2,7 +2,7 @@ spring:
   application:
     name: gateway-dist
   profiles:
-    active: dev
+    active: ${SPRING_PROFILES_ACTIVE:local}
   cloud:
     kubernetes:
       reload:

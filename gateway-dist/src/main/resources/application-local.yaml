@@ -1,0 +1,18 @@
+# 本地调试环境配置
+spring:
+  cloud:
+    kubernetes:
+      # 禁用kube的ribbon配置，结合下边ribbon单独配置，便于本地调试
+      ribbon:
+        enabled: false
+
+# 禁用kube的ribbon配置，结合下边ribbon单独配置，便于本地调试
+# 对应的server通过kube ingress 暴露到外部，从而提供部分模块的本地调试能力
+# 注：需要对应的ingress配置，将本服务本次测试需要的ingress负载均衡配置配置到这里来
+# 本地调试可能同时需要配置host
+account-dist:
+  ribbon:
+    listOfServers: account.leonzhangxf.com
+gateway-dist:
+  ribbon:
+    listOfServers: gateway.leonzhangxf.com

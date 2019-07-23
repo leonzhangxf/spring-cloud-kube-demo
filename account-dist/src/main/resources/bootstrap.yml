@@ -2,7 +2,7 @@ spring:
   application:
     name: account-dist
   profiles:
-    active: dev
+    active: ${SPRING_PROFILES_ACTIVE:local}
   cloud:
     kubernetes:
       client:
