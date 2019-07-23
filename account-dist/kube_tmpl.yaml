@@ -10,7 +10,7 @@ spec:
   selector:
     matchLabels:
       name: account-dist
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -48,11 +48,9 @@ metadata:
 spec:
   selector:
     name: account-dist
-  type: NodePort
   ports:
     - name: http
       port: 8080
-      nodePort: 30000
 
 ---
 

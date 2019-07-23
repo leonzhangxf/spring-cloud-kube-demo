@@ -48,10 +48,8 @@ metadata:
 spec:
   selector:
     name: gateway-dist
-  type: NodePort
   ports:
     - name: http
-      nodePort: 30001
       port: 8080
 
 ---

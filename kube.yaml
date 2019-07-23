@@ -48,11 +48,9 @@ metadata:
 spec:
   selector:
     name: account-dist
-  type: NodePort
   ports:
     - name: http
       port: 8080
-      nodePort: 30000
 
 ---
 
@@ -126,10 +124,8 @@ metadata:
 spec:
   selector:
     name: gateway-dist
-  type: NodePort
   ports:
     - name: http
-      nodePort: 30001
       port: 8080
 
 ---
