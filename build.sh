@@ -47,10 +47,10 @@ for ((i=0;i<${#MODULES[*]};i++)); do
     KUBE_FILE=$(find ./${MODULES[$i]}/ -mindepth 1 -maxdepth 1 -name kube.yaml)
     if [[ -e ${KUBE_FILE} ]]; then
         echo "Found the kube.yaml file in ${MODULES[$i]} module, start to replace the variables."
-        sed -i "s|{{ TAG }}|${TAG}|g" ${KUBE_FILE}
-        sed -i "s|{{ REGISTRY }}|${REGISTRY}|g" ${KUBE_FILE}
-        sed -i "s|{{ NAMESPACE }}|${NAMESPACE}|g" ${KUBE_FILE}
-        sed -i "s|{{ SPRING_PROFILES_ACTIVE }}|${SPRING_PROFILES_ACTIVE}|g" ${KUBE_FILE}
+        sed -i "s|\${TAG}|${TAG}|g" ${KUBE_FILE}
+        sed -i "s|\${REGISTRY}|${REGISTRY}|g" ${KUBE_FILE}
+        sed -i "s|\${NAMESPACE}|${NAMESPACE}|g" ${KUBE_FILE}
+        sed -i "s|\${SPRING_PROFILES_ACTIVE}|${SPRING_PROFILES_ACTIVE}|g" ${KUBE_FILE}
         echo "Found the kube.yaml file in ${MODULES[$i]} module, replace the variables end."
     else
         echo "Not found the kube.yaml file in ${MODULES[$i]} module."
@@ -61,10 +61,10 @@ done
 ROOT_KUBE_FILE=$(find ./ -mindepth 1 -maxdepth 1 -name kube.yaml)
 if [[ -e ${ROOT_KUBE_FILE} ]]; then
     echo "Found the kube.yaml file under project root, start to replace the variables."
-    sed -i "s|{{ TAG }}|${TAG}|g" ${ROOT_KUBE_FILE}
-    sed -i "s|{{ REGISTRY }}|${REGISTRY}|g" ${ROOT_KUBE_FILE}
-    sed -i "s|{{ NAMESPACE }}|${NAMESPACE}|g" ${ROOT_KUBE_FILE}
-    sed -i "s|{{ SPRING_PROFILES_ACTIVE }}|${SPRING_PROFILES_ACTIVE}|g" ${ROOT_KUBE_FILE}
+    sed -i "s|\${TAG}|${TAG}|g" ${ROOT_KUBE_FILE}
+    sed -i "s|\${REGISTRY}|${REGISTRY}|g" ${ROOT_KUBE_FILE}
+    sed -i "s|\${NAMESPACE}|${NAMESPACE}|g" ${ROOT_KUBE_FILE}
+    sed -i "s|\${SPRING_PROFILES_ACTIVE}|${SPRING_PROFILES_ACTIVE}|g" ${ROOT_KUBE_FILE}
     echo "Found the kube.yaml file under project root, replace the variables end."
 else
     echo "Not found the kube.yaml file under project root."
