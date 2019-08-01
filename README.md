@@ -13,6 +13,7 @@ spring cloud kubernetes实现的使用Demo
 
 使用spring cloud框架，服务组件实现采用kubernetes
 
+安装kubernetes过程中可能出现一直安装不成功问题，是由于镜像无法正常下载，可以参考[Aliyun容器服务建议](https://github.com/AliyunContainerService/k8s-for-docker-desktop)
 
 ## 安装教程
 
