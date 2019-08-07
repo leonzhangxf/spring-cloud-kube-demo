@@ -23,8 +23,8 @@ fi
 
 TAG=$4
 if [[ TAG || -z TAG ]]; then
-    # 默认tag
-	TAG=`date "+%Y%m%d%H%M%S"`
+	TIME_ELE=`date "+%Y%m%d%H%M%S"`
+	TAG="${NAMESPACE}-${SPRING_PROFILES_ACTIVE}-${TIME_ELE}"
 fi
 
 # 构建项目
