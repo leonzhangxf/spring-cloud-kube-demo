@@ -23,7 +23,7 @@
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
 
         <logstash-logback-encoder.version>6.1</logstash-logback-encoder.version>
-        <guava.version>28.0-jre</guava.version>
+        <guava.version>29.0-jre</guava.version>
         <guice.version>4.2.2</guice.version>
         <swagger.version>3.0.0-SNAPSHOT</swagger.version>
     </properties>
